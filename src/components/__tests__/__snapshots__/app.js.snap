@@ -4,15 +4,19 @@ exports[`App renders without crashing 1`] = `
 <div
   className="app"
 >
-  <div
+  <form
     className="search"
+    onSubmit={[Function]}
   >
     <input
       className="search-box"
+      name="search"
+      onChange={[Function]}
       placeholder="Search…"
       type="search"
+      value="puppy"
     />
-  </div>
+  </form>
   <div
     className="slideshow"
   >
@@ -26,26 +30,26 @@ exports[`App renders without crashing 1`] = `
           alt=""
           src="https://farmundefined.staticflickr.com/undefined/undefined_undefined_c.jpg"
         />
-      </div>
-      <div
-        className="arrow arrow-left"
-      >
-        <a
-          href=""
-          onClick={[Function]}
+        <div
+          className="arrow arrow-left"
         >
-          &lt;
-        </a>
-      </div>
-      <div
-        className="arrow arrow-right"
-      >
-        <a
-          href=""
-          onClick={[Function]}
+          <a
+            href=""
+            onClick={[Function]}
+          >
+            &lt;
+          </a>
+        </div>
+        <div
+          className="arrow arrow-right"
         >
-          &gt;
-        </a>
+          <a
+            href=""
+            onClick={[Function]}
+          >
+            &gt;
+          </a>
+        </div>
       </div>
     </div>
     <div

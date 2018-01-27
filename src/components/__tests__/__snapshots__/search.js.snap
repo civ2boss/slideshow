@@ -1,13 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Search renders without crashing 1`] = `
-<div
+<form
   className="search"
+  onSubmit={undefined}
 >
   <input
     className="search-box"
+    name="search"
+    onChange={undefined}
     placeholder="Search…"
     type="search"
+    value={undefined}
   />
-</div>
+</form>
 `;

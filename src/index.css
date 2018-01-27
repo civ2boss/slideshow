@@ -22,23 +22,25 @@
 }
 
 .viewer {
-  position: relative;
-}
-
-.image {
   align-items: center;
   border-radius: 5px;
   display: flex;
-  height: 100%;
+  position: relative;
   max-height: 650px;
   min-height: 650px;
   overflow: hidden;
+}
+
+.image {
+  border-radius: 5px;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
   width: 100%;
 }
 
 .image img {
   background: grey;
-  border-radius: 5px;
   display: block;
   width: 100%;
 }
@@ -71,16 +73,8 @@
   left: 0;
 }
 
-.arrow-left > a {
-  border-radius: 5px 0 0 5px;
-}
-
 .arrow-right {
   right: 0;
-}
-
-.arrow-right > a {
-  border-radius: 0 5px 5px 0;
 }
 
 .thumbnails {

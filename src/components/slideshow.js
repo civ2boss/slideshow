@@ -11,16 +11,16 @@ class Slideshow extends React.Component {
               src={this.props.flickrPhotoUrl(this.props.selected, 'c')}
               alt=""
             />
-          </div>
-          <div className="arrow arrow-left">
-            <a href="" onClick={this.props.prevPhoto}>
-              &lt;
-            </a>
-          </div>
-          <div className="arrow arrow-right">
-            <a href="" onClick={this.props.nextPhoto}>
-              &gt;
-            </a>
+            <div className="arrow arrow-left">
+              <a href="" onClick={this.props.prevPhoto}>
+                &lt;
+              </a>
+            </div>
+            <div className="arrow arrow-right">
+              <a href="" onClick={this.props.nextPhoto}>
+                &gt;
+              </a>
+            </div>
           </div>
         </div>
         <div className="thumbnails">
