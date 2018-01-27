@@ -68,15 +68,19 @@ class App extends React.Component {
 
   searchPhotos(e) {
     e.preventDefault();
-    fetch(this.flickrBuildAPIUrl(this.state.tags.replace(/\s/g, '+')))
-      .then(res => res.json())
-      .then(response => {
-        this.setState({
-          selected: response.photos.photo[0],
-          selectedIndex: 0,
-          photos: response.photos.photo
+    if (this.state.tags !== '') {
+      fetch(this.flickrBuildAPIUrl(this.state.tags.replace(/\s/g, '+')))
+        .then(res => res.json())
+        .then(response => {
+          if (response.photos && response.photos.photo.length > 0) {
+            this.setState({
+              selected: response.photos.photo[0],
+              selectedIndex: 0,
+              photos: response.photos.photo
+            });
+          }
         });
-      });
+    }
   }
 
   componentDidMount() {
