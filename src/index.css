@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .app {
   margin: 2rem auto;
   max-width: 650px;
@@ -22,9 +26,16 @@
 }
 
 .image {
+  align-items: center;
+  display: flex;
+  height: 650px;
+  width: 100%;
+}
+
+.image img {
   background: grey;
   border-radius: 5px;
-  min-height: 300px;
+  display: block;
   width: 100%;
 }
 
@@ -73,5 +84,31 @@
   border-radius: 5px;
   margin-top: 1rem;
   min-height: 100px;
+  padding: 1rem;
   width: 100%;
+}
+
+.thumbnails ul {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 110px;
+  grid-auto-rows: 110px;
+  grid-gap: 1rem;
+  justify-content: flex-start;
+  list-style: none;
+  margin: 0;
+  overflow-x: scroll;
+  padding: 0;
+  width: auto;
+}
+
+.thumbnails li {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.thumbnails .active {
+  border: 5px solid white;
 }
