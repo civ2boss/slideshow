@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders without crashing 1`] = `
+<div
+  className="app"
+>
+  <div
+    className="search"
+  >
+    <input
+      className="search-box"
+      placeholder="Search…"
+      type="search"
+    />
+  </div>
+  <div
+    className="slideshow"
+  >
+    <div
+      className="viewer"
+    >
+      <div
+        className="image"
+      >
+        <img
+          alt=""
+          src="https://farmundefined.staticflickr.com/undefined/undefined_undefined_c.jpg"
+        />
+      </div>
+      <div
+        className="arrow arrow-left"
+      >
+        <a
+          href=""
+          onClick={[Function]}
+        >
+          &lt;
+        </a>
+      </div>
+      <div
+        className="arrow arrow-right"
+      >
+        <a
+          href=""
+          onClick={[Function]}
+        >
+          &gt;
+        </a>
+      </div>
+    </div>
+    <div
+      className="thumbnails"
+    >
+      <ul />
+    </div>
+  </div>
+</div>
+`;
