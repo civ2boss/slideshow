@@ -19,6 +19,8 @@ class App extends React.Component {
     this.selectPhoto = this.selectPhoto.bind(this);
     this.prevPhoto = this.prevPhoto.bind(this);
     this.nextPhoto = this.nextPhoto.bind(this);
+    this.updateTag = this.updateTag.bind(this);
+    this.searchPhotos = this.searchPhotos.bind(this);
   }
 
   flickrPhotoUrl(photo, format) {
@@ -46,6 +48,31 @@ class App extends React.Component {
     this.setState(nextPhoto(this.state));
   }
 
+  updateTag(e) {
+    let tag = e.target.value;
+    this.setState({
+      tag
+    });
+  }
+
+  searchPhotos(e) {
+    e.preventDefault();
+    fetch(
+      `https://api.flickr.com/services/rest/?api_key=7b07ad6356a53f942bd7453bdc60f7e0&method=flickr.photos.search&tags=${this.state.tag.replace(
+        /\s/g,
+        '+'
+      )}&format=json&nojsoncallback=1`
+    )
+      .then(res => res.json())
+      .then(response => {
+        this.setState({
+          selected: response.photos.photo[0],
+          selectedIndex: 0,
+          photos: response.photos.photo
+        });
+      });
+  }
+
   componentDidMount() {
     fetch(
       `https://api.flickr.com/services/rest/?api_key=7b07ad6356a53f942bd7453bdc60f7e0&method=flickr.photos.search&tags=${
@@ -65,7 +92,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <Search />
+        <Search
+          tag={this.state.tag}
+          updateTag={this.updateTag}
+          searchPhotos={this.searchPhotos}
+        />
         <Slideshow
           selected={this.state.selected}
           photos={this.state.photos}
