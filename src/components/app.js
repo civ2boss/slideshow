@@ -48,7 +48,9 @@ class App extends React.Component {
 
   componentDidMount() {
     fetch(
-      `https://api.flickr.com/services/rest/?api_key=7b07ad6356a53f942bd7453bdc60f7e0&method=flickr.photos.search&tags=puppy&format=json&nojsoncallback=1`
+      `https://api.flickr.com/services/rest/?api_key=7b07ad6356a53f942bd7453bdc60f7e0&method=flickr.photos.search&tags=${
+        this.state.tag
+      }&format=json&nojsoncallback=1`
     )
       .then(res => res.json())
       .then(response => {
