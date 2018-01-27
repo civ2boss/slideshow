@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor() {
     super();
 
-    this.flickrHost = `https://api.flickr.com/services/rest/`;
+    this.flickrHost = 'https://api.flickr.com/services/rest/';
     this.flickrAPI = '7b07ad6356a53f942bd7453bdc60f7e0';
     this.flickrMethod = 'flickr.photos.search';
     this.flickrFormat = '&format=json&nojsoncallback=1';

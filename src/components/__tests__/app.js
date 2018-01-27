@@ -108,3 +108,51 @@ test('flickrPhotoUrl returns a photo url', () => {
     }_t.jpg`
   );
 });
+
+test('flickrBuildAPIUrl returns a api url', () => {
+  global.fetch = jest.fn().mockImplementation(() => {
+    return new Promise((res, rej) => {
+      res({
+        ok: true,
+        Id: '123',
+        json: function() {
+          return {
+            photos: {
+              photo: [
+                {
+                  farm: 5,
+                  id: '39027851635',
+                  isfamily: 0,
+                  isfriend: 0,
+                  ispublic: 1,
+                  owner: '70152224@N08',
+                  secret: 'f8bd038f57',
+                  server: '4757',
+                  title: 'Liam. Day Fourty-Four.'
+                },
+                {
+                  farm: 5,
+                  id: '39215590324',
+                  isfamily: 0,
+                  isfriend: 0,
+                  ispublic: 1,
+                  owner: '70152224@N08',
+                  secret: 'fa0c4bd546',
+                  server: '4724',
+                  title: 'Liam. Day Fourty-Three.'
+                }
+              ]
+            }
+          };
+        }
+      });
+    });
+  });
+  const component = shallow(<App />);
+
+  const tags = 'puppy';
+  const url = component.instance().flickrBuildAPIUrl(tags);
+  expect(url).toBe(
+    `https://api.flickr.com/services/rest/?api_key=7b07ad6356a53f942bd7453bdc60f7e0&method=flickr.photos.search&tags=${tags}&format=json&nojsoncallback=1`
+  );
+});
