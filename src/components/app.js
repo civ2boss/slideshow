@@ -1,7 +1,9 @@
 import React from 'react';
 
-import Search from './search.js';
-import Slideshow from './slideshow.js';
+import Search from './search';
+import Slideshow from './slideshow';
+
+import { prevPhoto, nextPhoto } from '../logic/state-functions';
 
 class App extends React.Component {
   constructor() {
@@ -36,26 +38,12 @@ class App extends React.Component {
 
   prevPhoto(e) {
     e.preventDefault();
-    const newIndex =
-      this.state.selectedIndex === 0
-        ? this.state.photos.length - 1
-        : this.state.selectedIndex - 1;
-    this.setState({
-      selected: this.state.photos[newIndex],
-      selectedIndex: newIndex
-    });
+    this.setState(prevPhoto(this.state));
   }
 
   nextPhoto(e) {
     e.preventDefault();
-    const newIndex =
-      this.state.selectedIndex === this.state.photos.length - 1
-        ? 0
-        : this.state.selectedIndex + 1;
-    this.setState({
-      selected: this.state.photos[newIndex],
-      selectedIndex: newIndex
-    });
+    this.setState(nextPhoto(this.state));
   }
 
   componentDidMount() {
