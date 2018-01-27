@@ -1,7 +1,12 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 class Slideshow extends React.Component {
+  componentDidUpdate() {
+    const activeThumbnail = ReactDOM.findDOMNode(this.refs.active);
+    this.refs.scrollbox.scrollLeft = activeThumbnail.offsetLeft;
+  }
   render() {
     return (
       <div className="slideshow">
@@ -24,10 +29,11 @@ class Slideshow extends React.Component {
           </div>
         </div>
         <div className="thumbnails">
-          <ul>
+          <ul ref="scrollbox">
             {this.props.photos.map((photo, i) => (
               <li
                 key={i}
+                ref={Object.is(this.props.selected, photo) ? 'active' : ''}
                 className={
                   Object.is(this.props.selected, photo) ? 'active' : ''
                 }
