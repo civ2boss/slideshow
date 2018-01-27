@@ -4,9 +4,20 @@ import PropTypes from 'prop-types';
 
 class Slideshow extends React.Component {
   componentDidUpdate() {
-    const activeThumbnail = ReactDOM.findDOMNode(this.refs.active);
-    this.refs.scrollbox.scrollLeft = activeThumbnail.offsetLeft;
+    const selectedThumb = ReactDOM.findDOMNode(this.refs.active);
+    if (this.refs.scrollbox) {
+      const scrollLeftAxis = this.refs.scrollbox.scrollLeft;
+      const scrollRightAxis =
+        this.refs.scrollbox.scrollLeft + this.refs.scrollbox.offsetWidth;
+      if (
+        selectedThumb.offsetLeft < scrollLeftAxis ||
+        selectedThumb.offsetLeft > scrollRightAxis
+      ) {
+        this.refs.scrollbox.scrollLeft = selectedThumb.offsetLeft;
+      }
+    }
   }
+
   render() {
     return (
       <div className="slideshow">

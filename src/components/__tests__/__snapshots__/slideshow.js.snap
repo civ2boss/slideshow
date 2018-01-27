@@ -12,7 +12,7 @@ exports[`Slideshow renders without crashing 1`] = `
     >
       <img
         alt=""
-        src="https://farmundefined.staticflickr.com/undefined/undefined_undefined_c.jpg"
+        src=""
       />
       <div
         className="arrow arrow-left"

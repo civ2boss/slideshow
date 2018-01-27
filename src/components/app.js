@@ -35,11 +35,12 @@ class App extends React.Component {
   }
 
   flickrPhotoUrl(photo, format) {
-    const farmID = photo.farm;
-    const serverID = photo.server;
-    const id = photo.id;
-    const secret = photo.secret;
-    return `https://farm${farmID}.staticflickr.com/${serverID}/${id}_${secret}_${format}.jpg`;
+    const { farm: farmID, server: serverID, id, secret } = photo;
+    if (farmID && serverID && id && secret) {
+      return `https://farm${farmID}.staticflickr.com/${serverID}/${id}_${secret}_${format}.jpg`;
+    } else {
+      return '';
+    }
   }
 
   selectPhoto(photo, index) {
