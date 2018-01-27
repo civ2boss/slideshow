@@ -10,8 +10,8 @@ class Search extends React.Component {
           name="search"
           className="search-box"
           placeholder="Search…"
-          value={this.props.tag}
-          onChange={this.props.updateTag}
+          value={this.props.tags}
+          onChange={this.props.updateTags}
         />
       </form>
     );
@@ -19,8 +19,8 @@ class Search extends React.Component {
 }
 
 Search.propTypes = {
-  tag: PropTypes.string,
-  updateTag: PropTypes.func,
+  tags: PropTypes.string,
+  updateTags: PropTypes.func,
   searchPhotos: PropTypes.func
 };
 

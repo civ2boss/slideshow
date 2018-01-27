@@ -9,18 +9,29 @@ class App extends React.Component {
   constructor() {
     super();
 
+    this.flickrHost = `https://api.flickr.com/services/rest/`;
+    this.flickrAPI = '7b07ad6356a53f942bd7453bdc60f7e0';
+    this.flickrMethod = 'flickr.photos.search';
+    this.flickrFormat = '&format=json&nojsoncallback=1';
+
     this.state = {
       selected: {},
       selectedIndex: 0,
       photos: [],
-      tag: 'puppy'
+      tags: 'puppy'
     };
 
     this.selectPhoto = this.selectPhoto.bind(this);
     this.prevPhoto = this.prevPhoto.bind(this);
     this.nextPhoto = this.nextPhoto.bind(this);
-    this.updateTag = this.updateTag.bind(this);
+    this.updateTags = this.updateTags.bind(this);
     this.searchPhotos = this.searchPhotos.bind(this);
+  }
+
+  flickrBuildAPIUrl(tags) {
+    return `${this.flickrHost}?api_key=${this.flickrAPI}&method=${
+      this.flickrMethod
+    }&tags=${tags}${this.flickrFormat}`;
   }
 
   flickrPhotoUrl(photo, format) {
@@ -48,21 +59,16 @@ class App extends React.Component {
     this.setState(nextPhoto(this.state));
   }
 
-  updateTag(e) {
-    let tag = e.target.value;
+  updateTags(e) {
+    let tags = e.target.value;
     this.setState({
-      tag
+      tags
     });
   }
 
   searchPhotos(e) {
     e.preventDefault();
-    fetch(
-      `https://api.flickr.com/services/rest/?api_key=7b07ad6356a53f942bd7453bdc60f7e0&method=flickr.photos.search&tags=${this.state.tag.replace(
-        /\s/g,
-        '+'
-      )}&format=json&nojsoncallback=1`
-    )
+    fetch(this.flickrBuildAPIUrl(this.state.tags.replace(/\s/g, '+')))
       .then(res => res.json())
       .then(response => {
         this.setState({
@@ -74,11 +80,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch(
-      `https://api.flickr.com/services/rest/?api_key=7b07ad6356a53f942bd7453bdc60f7e0&method=flickr.photos.search&tags=${
-        this.state.tag
-      }&format=json&nojsoncallback=1`
-    )
+    fetch(this.flickrBuildAPIUrl(this.state.tags))
       .then(res => res.json())
       .then(response => {
         this.setState({
@@ -93,8 +95,8 @@ class App extends React.Component {
     return (
       <div className="app">
         <Search
-          tag={this.state.tag}
-          updateTag={this.updateTag}
+          tags={this.state.tags}
+          updateTags={this.updateTags}
           searchPhotos={this.searchPhotos}
         />
         <Slideshow
