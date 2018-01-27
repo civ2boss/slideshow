@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search renders without crashing 1`] = `
+<div
+  className="search"
+>
+  <input
+    className="search-box"
+    placeholder="Search…"
+    type="search"
+  />
+</div>
+`;
