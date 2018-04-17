@@ -6,26 +6,16 @@ import Slideshow from './slideshow';
 import { prevPhoto, nextPhoto } from '../logic/state-functions';
 
 class App extends React.Component {
-  constructor() {
-    super();
+  flickrHost = 'https://api.flickr.com/services/rest/';
+  flickrAPI = '7b07ad6356a53f942bd7453bdc60f7e0';
+  flickrMethod = 'flickr.photos.search';
+  flickrFormat = '&format=json&nojsoncallback=1';
 
-    this.flickrHost = 'https://api.flickr.com/services/rest/';
-    this.flickrAPI = '7b07ad6356a53f942bd7453bdc60f7e0';
-    this.flickrMethod = 'flickr.photos.search';
-    this.flickrFormat = '&format=json&nojsoncallback=1';
-
-    this.state = {
-      selected: {},
-      selectedIndex: 0,
-      photos: [],
-      tags: 'puppy'
-    };
-
-    this.selectPhoto = this.selectPhoto.bind(this);
-    this.prevPhoto = this.prevPhoto.bind(this);
-    this.nextPhoto = this.nextPhoto.bind(this);
-    this.updateTags = this.updateTags.bind(this);
-    this.searchPhotos = this.searchPhotos.bind(this);
+  state = {
+    selected: {},
+    selectedIndex: 0,
+    photos: [],
+    tags: 'puppy'
   }
 
   flickrBuildAPIUrl(tags) {
@@ -43,31 +33,31 @@ class App extends React.Component {
     }
   }
 
-  selectPhoto(photo, index) {
+  selectPhoto = (photo, index) => {
     this.setState({
       selected: photo,
       selectedIndex: index
     });
   }
 
-  prevPhoto(e) {
+  prevPhoto = (e) => {
     e.preventDefault();
     this.setState(prevPhoto(this.state));
   }
 
-  nextPhoto(e) {
+  nextPhoto = (e) => {
     e.preventDefault();
     this.setState(nextPhoto(this.state));
   }
 
-  updateTags(e) {
+  updateTags = (e) => {
     let tags = e.target.value;
     this.setState({
       tags
     });
   }
 
-  searchPhotos(e) {
+  searchPhotos = (e) => {
     e.preventDefault();
     if (this.state.tags !== '') {
       fetch(this.flickrBuildAPIUrl(this.state.tags.replace(/\s/g, '+')))
