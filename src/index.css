@@ -46,24 +46,26 @@
 }
 
 .arrow {
-  font-size: 3rem;
-  font-weight: 600;
   height: 100%;
   position: absolute;
   top: 0;
 }
 
-.arrow > a {
+.arrow > button {
   align-items: center;
+  border: 0;
   color: #333;
+  cursor: pointer;
   display: flex;
+  font-size: 3rem;
+  font-weight: 600;
   height: 100%;
   opacity: 0.3;
   padding: 0 0.5em;
   text-decoration: none;
 }
 
-.arrow > a:hover {
+.arrow > button:hover {
   background: rgba(0, 0, 0, 0.3);
   color: white;
   opacity: 1;

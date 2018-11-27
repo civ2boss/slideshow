@@ -28,14 +28,14 @@ class Slideshow extends React.Component {
               alt=""
             />
             <div className="arrow arrow-left">
-              <a href="" onClick={this.props.prevPhoto}>
+              <button onClick={this.props.prevPhoto}>
                 &lt;
-              </a>
+              </button>
             </div>
             <div className="arrow arrow-right">
-              <a href="" onClick={this.props.nextPhoto}>
+              <button onClick={this.props.nextPhoto}>
                 &gt;
-              </a>
+              </button>
             </div>
           </div>
         </div>
