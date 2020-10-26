@@ -1,22 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Search extends React.Component {
-  render() {
-    return (
-      <form className="search" onSubmit={this.props.searchPhotos}>
-        <input
-          type="search"
-          name="search"
-          className="search-box"
-          placeholder="Search…"
-          value={this.props.tags}
-          onChange={this.props.updateTags}
-        />
-      </form>
-    );
-  }
-}
+const Search = ({
+  tags,
+  updateTags,
+  searchPhotos,
+}) => (
+  <form className="search" onSubmit={searchPhotos}>
+    <input
+      type="search"
+      name="search"
+      className="search-box"
+      placeholder="Search…"
+      value={tags}
+      onChange={updateTags}
+    />
+  </form>
+);
 
 Search.propTypes = {
   tags: PropTypes.string,
