@@ -3,15 +3,12 @@
 exports[`Search renders without crashing 1`] = `
 <form
   className="search"
-  onSubmit={undefined}
 >
   <input
     className="search-box"
     name="search"
-    onChange={undefined}
     placeholder="Search…"
     type="search"
-    value={undefined}
   />
 </form>
 `;

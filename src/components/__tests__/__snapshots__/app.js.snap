@@ -33,22 +33,20 @@ exports[`App renders without crashing 1`] = `
         <div
           className="arrow arrow-left"
         >
-          <a
-            href=""
+          <button
             onClick={[Function]}
           >
             &lt;
-          </a>
+          </button>
         </div>
         <div
           className="arrow arrow-right"
         >
-          <a
-            href=""
+          <button
             onClick={[Function]}
           >
             &gt;
-          </a>
+          </button>
         </div>
       </div>
     </div>

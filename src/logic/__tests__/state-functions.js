@@ -13,7 +13,7 @@ test('prevPhoto shows the previous photo', () => {
       server: '4724',
       title: 'Liam. Day Fourty-Three.'
     },
-    selectedIndex: 1,
+    index: 1,
     photos: [
       {
         farm: 5,
@@ -43,7 +43,7 @@ test('prevPhoto shows the previous photo', () => {
   const finishState = prevPhoto(startState);
 
   expect(finishState.selected).toEqual(startState.photos[0]);
-  expect(finishState.selectedIndex).toBe(0);
+  expect(finishState.index).toBe(0);
 });
 
 test('prevPhoto shows last photo if at the beginning', () => {
@@ -59,7 +59,7 @@ test('prevPhoto shows last photo if at the beginning', () => {
       server: '4757',
       title: 'Liam. Day Fourty-Four.'
     },
-    selectedIndex: 0,
+    index: 0,
     photos: [
       {
         farm: 5,
@@ -89,7 +89,7 @@ test('prevPhoto shows last photo if at the beginning', () => {
   const finishState = prevPhoto(startState);
 
   expect(finishState.selected).toEqual(startState.photos[1]);
-  expect(finishState.selectedIndex).toBe(1);
+  expect(finishState.index).toBe(1);
 });
 
 test('nextPhoto shows the next photo', () => {
@@ -105,7 +105,7 @@ test('nextPhoto shows the next photo', () => {
       server: '4757',
       title: 'Liam. Day Fourty-Four.'
     },
-    selectedIndex: 0,
+    index: 0,
     photos: [
       {
         farm: 5,
@@ -135,7 +135,7 @@ test('nextPhoto shows the next photo', () => {
   const finishState = nextPhoto(startState);
 
   expect(finishState.selected).toEqual(startState.photos[1]);
-  expect(finishState.selectedIndex).toBe(1);
+  expect(finishState.index).toBe(1);
 });
 
 test('nextPhoto shows first photo if at the end', () => {
@@ -151,7 +151,7 @@ test('nextPhoto shows first photo if at the end', () => {
       server: '4724',
       title: 'Liam. Day Fourty-Three.'
     },
-    selectedIndex: 1,
+    index: 1,
     photos: [
       {
         farm: 5,
@@ -181,5 +181,5 @@ test('nextPhoto shows first photo if at the end', () => {
   const finishState = nextPhoto(startState);
 
   expect(finishState.selected).toEqual(startState.photos[0]);
-  expect(finishState.selectedIndex).toBe(0);
+  expect(finishState.index).toBe(0);
 });

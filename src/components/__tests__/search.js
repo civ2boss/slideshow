@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Search from '../Search';
+import Search from '../search';
 
 test('Search renders without crashing', () => {
   const component = renderer.create(<Search />);

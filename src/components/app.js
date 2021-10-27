@@ -5,33 +5,33 @@ import Slideshow from './slideshow';
 
 import { prevPhoto, nextPhoto } from '../logic/state-functions';
 
-const App = () => {
-  const flickrHost = 'https://api.flickr.com/services/rest/';
-  const flickrAPI = '7b07ad6356a53f942bd7453bdc60f7e0';
-  const flickrMethod = 'flickr.photos.search';
-  const flickrFormat = '&format=json&nojsoncallback=1';
+const flickrHost = 'https://api.flickr.com/services/rest/';
+const flickrAPI = '7b07ad6356a53f942bd7453bdc60f7e0';
+const flickrMethod = 'flickr.photos.search';
+const flickrFormat = '&format=json&nojsoncallback=1';
 
+export const flickrBuildAPIUrl = (tags) => {
+  return `${flickrHost}?api_key=${flickrAPI}&method=${
+    flickrMethod
+  }&tags=${tags}${flickrFormat}`;
+};
+
+export const flickrPhotoUrl = (photo, format) => {
+  const { farm: farmID, server: serverID, id, secret } = photo;
+  if (farmID && serverID && id && secret) {
+    return `https://farm${farmID}.staticflickr.com/${serverID}/${id}_${secret}_${format}.jpg`;
+  } else {
+    return '';
+  }
+};
+
+const App = () => {
   const [appState, setAppState] = useState({
     selected: {},
     index: 0,
     photos: [],
     tags: 'puppy',
   });
-
-  const flickrBuildAPIUrl = (tags) => {
-    return `${flickrHost}?api_key=${flickrAPI}&method=${
-      flickrMethod
-    }&tags=${tags}${flickrFormat}`;
-  };
-
-  const flickrPhotoUrl = (photo, format) => {
-    const { farm: farmID, server: serverID, id, secret } = photo;
-    if (farmID && serverID && id && secret) {
-      return `https://farm${farmID}.staticflickr.com/${serverID}/${id}_${secret}_${format}.jpg`;
-    } else {
-      return '';
-    }
-  };
 
   const handleSelectPhoto = (photo, index) => (
     setAppState({
