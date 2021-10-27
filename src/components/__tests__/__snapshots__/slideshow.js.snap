@@ -12,34 +12,51 @@ exports[`Slideshow renders without crashing 1`] = `
     >
       <img
         alt=""
-        src=""
+        src="https://farm5.staticflickr.com/4724/39215590324_fa0c4bd546_c.jpg"
       />
       <div
         className="arrow arrow-left"
       >
-        <a
-          href=""
+        <button
           onClick={[Function]}
         >
           &lt;
-        </a>
+        </button>
       </div>
       <div
         className="arrow arrow-right"
       >
-        <a
-          href=""
+        <button
           onClick={[Function]}
         >
           &gt;
-        </a>
+        </button>
       </div>
     </div>
   </div>
   <div
     className="thumbnails"
   >
-    <ul />
+    <ul>
+      <li
+        className=""
+        onClick={[Function]}
+      >
+        <img
+          alt=""
+          src="https://farm5.staticflickr.com/4757/39027851635_f8bd038f57_t.jpg"
+        />
+      </li>
+      <li
+        className=""
+        onClick={[Function]}
+      >
+        <img
+          alt=""
+          src="https://farm5.staticflickr.com/4724/39215590324_fa0c4bd546_t.jpg"
+        />
+      </li>
+    </ul>
   </div>
 </div>
 `;

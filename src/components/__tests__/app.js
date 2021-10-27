@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
-import App from '../App';
+import App, { flickrBuildAPIUrl, flickrPhotoUrl } from '../app';
 
 test('App renders without crashing', () => {
   global.fetch = jest.fn().mockImplementation(() => {
@@ -87,7 +87,6 @@ test('flickrPhotoUrl returns a photo url', () => {
       });
     });
   });
-  const component = shallow(<App />);
 
   const photo = {
     farm: 5,
@@ -101,7 +100,7 @@ test('flickrPhotoUrl returns a photo url', () => {
     title: 'Liam. Day Fourty-Three.'
   };
 
-  const url = component.instance().flickrPhotoUrl(photo, 't');
+  const url = flickrPhotoUrl(photo, 't');
   expect(url).toBe(
     `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${
       photo.secret
@@ -148,10 +147,9 @@ test('flickrBuildAPIUrl returns a api url', () => {
       });
     });
   });
-  const component = shallow(<App />);
 
   const tags = 'puppy';
-  const url = component.instance().flickrBuildAPIUrl(tags);
+  const url = flickrBuildAPIUrl(tags);
   expect(url).toBe(
     `https://api.flickr.com/services/rest/?api_key=7b07ad6356a53f942bd7453bdc60f7e0&method=flickr.photos.search&tags=${tags}&format=json&nojsoncallback=1`
   );
